@@ -1,0 +1,53 @@
+# Dolibarr language file - Source file is en_US - paypal
+
+# Module label 'ModuleXXXName'
+Module600000Name = PayPlug
+# Module description 'ModuleXXXDesc'
+Module431300Desc =  Module permettant d'offrir en ligne une page de paiement par carte de crédit avec PayPlug
+
+
+PayplugSetup=Configuration module PayPlug
+PayplugDesc=Ce module permet d'offrir une page de paiement via le prestataire <a href="http://www.payplug.fr" target="_blank">PayPlug</a> pour réaliser un paiement quelconque ou un paiement par rapport à un objet Dolibarr (facture, commande…)
+
+PAYPLUG_MODE=Mode de fonctionnement
+PAYPLUG_OFFER=Offre Payplug
+PAYPLUG_STARTER=STARTER: paiement redirection/lightbox
+PAYPLUG_PREMIUM=PREMIUM: paiement intégré et fonctions associées
+PAYPLUG_SK_LIVE=Private key Clé LIVE
+PAYPLUG_SK_TEST=Private key Clé TEST
+PAYPLUG_PK_LIVE=Publishable key clé LIVE
+PAYPLUG_PK_TEST=Publishable key TEST
+
+PAYPLUG_LIVE1=PayPlug Starter LIVE
+PAYPLUG_TEST1=PayPlug Starter TEST
+PAYPLUG_LIVE2=PayPlug Premium LIVE
+PAYPLUG_TEST2=PayPlug Premium TEST
+PAYPLUG_REF =Référence
+PAYPLUG_ID_TRANSACTION =Numéro de commande ou de facture
+PAYPLUG_ACCOUNT=Compte bancaire utilisé
+PAYPLUG_PARAMETER=Paramètres PayPlug
+PAYPLUG_ACCOUNT=Compte bancaire utilisé pour PayPlug
+PAYPLUG_ACCOUNT_EX=Un compte bancaire dédié est fortement recommandé pour un suivi comptable
+PAYPLUG_PUBLIC=Paiement en ligne
+PAYPLUG_PUBLIC_WELCOME=Bienvenue sur notre interface de paiement
+PAYPLUG_CARDNUMBER=Numéro de carte
+PAYPLUG_CARDEXPI=Expiration MM/YY / MM/YYYY
+PAYPLUG_PAID=Payer
+PAYPLUG_AUTO=Utilisateur utilisé pour la gestion automatique
+PAYPLUG_GENERIC=Tiers utilisé pour les commandes de type guichet
+PAYPLUG_WAREHOUSE=Entrepot utilisé pour la décrémentation si activé
+PAYPLUG_ENABLE_PUBLIC =Activer l'interface publique
+PAYPLUG_PUBLIC_URL=Une interface publique de paiement est disponible à l'url suivante:
+PAYPLUG_IPN_URL=L'Instant Payment Notification est disponible à l'url suivante:
+PAYPLUG_FORCE_3DSECURE =Sécurisation du paiement par 3D Secure
+PAYPLUG_FORCE_3DSECUREDISABLED =Laisser PayPlug choisir d'appliquer ou non le 3D Secure via Smart 3D Secure
+PAYPLUG_FORCE_3DSECUREACTIVATED =Forcer le 3D secure sur tous les paiements
+PAYPLUG_EMAIL_HELP =Email d'assistance
+PAYPLUG_HELP=Besoin d'assistance?
+PAYPLUG_ERROR_INPUT=Les données saisies sont incorrectes!
+PAYPLUG_ERROR_PAID=Cette référence n'est plus éligible au paiement en ligne!
+PAYPLUG_ERROR_DISABLED=Cette interface est actuellement désactivée.
+PAYPLUG_ERROR_CARD=Le numéro de carte est incorrect!
+PAYPLUG_ERROR_EXPI=La date d'expiration est incorrecte!
+PAYPLUG_ERROR_CVV=Le CVV est incorrect!
+PAYPLUG_THANK=Merci, votre paiement a été accepté! un email de confirmation a été envoyé à

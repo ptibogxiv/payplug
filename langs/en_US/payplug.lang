@@ -1,0 +1,53 @@
+# Dolibarr language file - Source file is en_US - paypal
+
+# Module label 'ModuleXXXName'
+Module600000Name = PayPlug
+# Module description 'ModuleXXXDesc'
+Module600000Desc =  Module allowing to offer online a payment page by credit card with PayPlug
+
+
+PayplugSetup=PayPlug module configuration
+PayplugDesc=This module makes it possible to offer a payment page via the service provider <a href="http://www.payplug.fr" target="_blank">PayPlug</a> to make any payment or payment in relation to a Dolibarr object (invoice, order ...)
+
+PAYPLUG_MODE=Operating mode
+PAYPLUG_OFFER=Offer Payplug
+PAYPLUG_STARTER=STARTER: Payment redirection / lightbox
+PAYPLUG_PREMIUM=PREMIUM: Integrated payment and associated functions
+PAYPLUG_SK_LIVE=Private key Clé LIVE
+PAYPLUG_SK_TEST=Private key Clé TEST
+PAYPLUG_PK_LIVE=Publishable key clé LIVE
+PAYPLUG_PK_TEST=Publishable key TEST
+
+PAYPLUG_LIVE1=PayPlug Starter LIVE
+PAYPLUG_TEST1=PayPlug Starter TEST
+PAYPLUG_LIVE2=PayPlug Premium LIVE
+PAYPLUG_TEST2=PayPlug Premium TEST
+PAYPLUG_REF=Reference
+PAYPLUG_ID_TRANSACTION=Order or invoice number
+PAYPLUG_ACCOUNT=Bank account used
+PAYPLUG_PARAMETER=PayPlug Settings
+PAYPLUG_ACCOUNT=Bank account used for PayPlug
+PAYPLUG_ACCOUNT_EX=A dedicated bank account is strongly recommended for an accounting follow-up
+PAYPLUG_PUBLIC=Online payment
+PAYPLUG_PUBLIC_WELCOME=Welcome to our payment interface
+PAYPLUG_CARDNUMBER=Card number
+PAYPLUG_CARDEXPI=Expiry MM/YY / MM/YYYY
+PAYPLUG_PAID=Pay
+PAYPLUG_AUTO=User used for automatic management
+PAYPLUG_GENERIC=Third party used for wicket type orders
+PAYPLUG_WAREHOUSE=Warehouse used for decrement if enabled
+PAYPLUG_ENABLE_PUBLIC=Enable public interface
+PAYPLUG_PUBLIC_URL=A public payment interface is available at the following URL:
+PAYPLUG_IPN_URL=The Instant Payment Notification is available at the following URL:
+PAYPLUG_FORCE_3DSECURE=Secure payment by 3D Secure
+PAYPLUG_FORCE_3DSECUREDISABLED=Let PayPlug choose whether to apply 3D Secure via Smart 3D Secure
+PAYPLUG_FORCE_3DSECUREACTIVATED=Force secure 3D on all payments
+PAYPLUG_EMAIL_HELP=Support Email
+PAYPLUG_HELP=Need help?
+PAYPLUG_ERROR_INPUT=The data entered is incorrect!
+PAYPLUG_ERROR_PAID=This reference is no longer eligible for online payment!
+PAYPLUG_ERROR_DISABLED=This interface is currently disabled.
+PAYPLUG_ERROR_CARD=The card number is incorrect!
+PAYPLUG_ERROR_EXPI=The expiration date is incorrect!
+PAYPLUG_ERROR_CVV=The CVV is incorrect!
+PAYPLUG_THANK=Thank you, your payment has been accepted! A confirmation email was sent to
