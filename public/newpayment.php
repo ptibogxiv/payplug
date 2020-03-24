@@ -96,7 +96,7 @@ $refemail=$invoice->thirdparty->email;
 $refaddress=$invoice->thirdparty->address;
 $refpostcode=$invoice->thirdparty->zip;
 $refcity=$invoice->thirdparty->town;
-$refcountry=getCountry($order->thirdparty->country_id, '2');
+$refcountry=getCountry($order->thirdparty->country_id, 2);
 $refdate=$invoice->date_validation;
 	}
 if ($conf->global->PAYPLUG_MODE == 'TEST'){$secret_key=$conf->global->PAYPLUG_SK_TEST;}
@@ -176,11 +176,6 @@ try {
         'source'       => $reftype,
         'ref'       => $reference,
         'customer'       => $refsocid, 
-        'member'       => '0',
-        'typeadherent'    => '0',
-        'cotisationstart'       => '0',
-        'cotisationend'       => '0',
-        'cotisationamount'       => '0'
   )
   ));
 } catch (\Payplug\Exception\ConnectionException $e) {
