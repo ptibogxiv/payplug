@@ -45,20 +45,20 @@ require_once DOL_DOCUMENT_ROOT . "/core/class/commonobject.class.php";
 $db->begin();
 
 ?>
-<HEAD><TITLE>Paiement en ligne</TITLE>
-<META charset="utf-8"><META name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<LINK rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<LINK rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
-<SCRIPT src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></SCRIPT>
-<SCRIPT src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></SCRIPT>
-<LINK href="//netdna.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.css" rel="stylesheet"></HEAD>
+<head><title>Paiement en ligne</title>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<link href="//netdna.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.css" rel="stylesheet"></head>
 <?php 
 if (isset($_POST['reference'])) {$reference=$_POST['reference'];}
 if (isset($_GET['reference'])) {$reference=$_GET['reference'];} 
 $langs->load("companies");
 $langs->load("payplug@payplug");
 $langs->load("orders");
-print "<DIV class='container'><DIV class='row'><DIV class='col-md-12'><H1><span class='fa fa-credit-card'></span> ".$langs->trans('PAYPLUG_PUBLIC')."</H1><HR /></DIV></DIV>";       	
+print "<div class='container'><div class='row'><div class='col-md-12'><h1><span class='fa fa-credit-card'></span> ".$langs->trans('PAYPLUG_PUBLIC')."</h1><hr /></div></div>";       	
 $order=new Commande($db);
 $result=$order->fetch('',$reference);
 	if ($result > 0)
@@ -102,9 +102,9 @@ $refdate=$invoice->date_validation;
 if ($conf->global->PAYPLUG_MODE == 'TEST'){$secret_key=$conf->global->PAYPLUG_SK_TEST;}
 elseif ($conf->global->PAYPLUG_MODE == 'LIVE'){$secret_key=$conf->global->PAYPLUG_SK_LIVE;}
 // Error message
-if (empty($conf->global->PAYPLUG_ENABLE_PUBLIC)){$msg="<DIV class='alert alert-info' role='alert'>".$langs->trans('PAYPLUG_ERROR_DISABLED')."</DIV>";}
-elseif (isset($refstatut) && ($refstatut != '1')) {$msg="<DIV class='alert alert-info' role='alert'>".$langs->trans('PAYPLUG_ERROR_PAID')."</DIV>";}
-elseif ($codeclient != $_POST['code_client']) {$msg="<DIV class='alert alert-danger' role='alert'>".$langs->trans('PAYPLUG_ERROR_INPUT')."</DIV>";}
+if (empty($conf->global->PAYPLUG_ENABLE_PUBLIC)){$msg="<div class='alert alert-info' role='alert'>".$langs->trans('PAYPLUG_ERROR_DISABLED')."</div>";}
+elseif (isset($refstatut) && ($refstatut != '1')) {$msg="<div class='alert alert-info' role='alert'>".$langs->trans('PAYPLUG_ERROR_PAID')."</div>";}
+elseif ($codeclient != $_POST['code_client']) {$msg="<div class='alert alert-danger' role='alert'>".$langs->trans('PAYPLUG_ERROR_INPUT')."</div>";}
 
 // secure key & entity link
 $key=dol_hash($refsocid.$type.$refid .$refentity, 2); 
@@ -122,18 +122,18 @@ header("location: ".$return);
 if ((!empty($conf->global->PAYPLUG_ENABLE_PUBLIC)) && ($_GET['secure'] == $key) && ($entity == $refentity) && isset($reference) && isset($refsocid) && ($refstatut < '2')){
 dol_include_once('/payplug/lib/init.php');
 
-print "<DIV class='row'><DIV class='col-md-3'></DIV>
-      <DIV class='col-md-6'><H3>Vendeur</H3>
-<DIV class='well'><P><B>".$langs->trans('CompanyName')." :</B> ".$conf->global->MAIN_INFO_SOCIETE_NOM."</P></DIV>
-<H3>".$langs->trans('Customer')."</H3>
-<DIV class='well'><P><B>".$langs->trans('CompanyName')." :</B> ".$refname."</P> 
-<P><B>".$langs->trans('EMail')." :</B> ".$refemail."</P> 
-<B>".$langs->trans('PAYPLUG_REF')." :</B> $reference</P>
-        <P><B>".$langs->trans('Date')." :</B> ".dol_print_date($refdate,'%d/%m/%Y',true)."</P></div></DIV><DIV class='col-md-3'></DIV></DIV><DIV class='row'><DIV class='col-md-3'></DIV><DIV class='col-md-6'>";     
+print "<DIV class='row'><div class='col-md-3'></div>
+      <div class='col-md-6'><h3>Vendeur</h3>
+<div class='well'><p><b>".$langs->trans('CompanyName')." :</b> ".$conf->global->MAIN_INFO_SOCIETE_NOM."</p></div>
+<h3>".$langs->trans('Customer')."</h3>
+<div class='well'><p><b>".$langs->trans('CompanyName')." :</b> ".$refname."</p> 
+<p><b>".$langs->trans('EMail')." :</b> ".$refemail."</p> 
+<b>".$langs->trans('PAYPLUG_REF')." :</b> $reference</p>
+        <p><b>".$langs->trans('Date')." :</b> ".dol_print_date($refdate,'%d/%m/%Y',true)."</p></div></div><div class='col-md-3'></div></div><div class='row'><div class='col-md-3'></div><div class='col-md-6'>";     
 if ($conf->global->PAYPLUG_OFFER == 'PREMIUM'){
 $amount=round($refamount*100); 
 ?>
-<SCRIPT type="text/javascript" src="https://api.payplug.com/js/1.0/payplug.js"></SCRIPT>
+<script type="text/javascript" src="https://api.payplug.com/js/1.0/payplug.js"></script>
 <?php        
 $valid= $_POST['validation'];
 $token = $_POST['payplugToken'];
@@ -153,7 +153,7 @@ try {
     'last_name'      => $refname
     'address1'       => $refaddress,
     'postcode'       => $refzip,
-    'city'           => $reftown
+    'city'           => $reftown,
     'country'        => $refcountry
     ),
     'shipping'       => array(
@@ -162,8 +162,9 @@ try {
     'last_name'      => $refname
     'address1'       => $refaddress,
     'postcode'       => $refzip,
-    'city'           => $reftown
-    'country'        => $refcountry
+    'city'           => $reftown,
+    'country'        => $refcountry,
+    'delivery_type'  => 'VERIFIED'
     ),
     'notification_url' => $notification,   
     'metadata'         => array(
@@ -193,18 +194,18 @@ print 'Caught exception: '. $e->getMessage();
 }
 
 if ($payment->is_paid == true) {
-print "<DIV><h3>".$langs->trans('PAYPLUG_THANK')." " . $payment->customer->email . ".</h3></DIV>";
+print "<div><h3>".$langs->trans('PAYPLUG_THANK')." " . $payment->customer->email . ".</h3></div>";
 } else {
   var_dump($e); 
-print "<DIV><STRONG>Error !</STRONG><BR />". $payment->failure->message ." (" . $payment->failure->code . ").</DIV>";
+print "<div><strong>Error !</strong><br />". $payment->failure->message ." (" . $payment->failure->code . ").</div>";
 }
-print "</DIV>";
+print "</div>";
 }
 else {
 if ($conf->global->PAYPLUG_MODE == TEST){$publish_key=$conf->global->PAYPLUG_PK_TEST;}
 elseif ($conf->global->PAYPLUG_MODE == LIVE){$publish_key=$conf->global->PAYPLUG_PK_LIVE;}     
 ?>
-<SCRIPT type="text/javascript">
+<script type="text/javascript">
   Payplug.setPublishableKey('<?PHP echo $publish_key;?>');
 
   var payplugResponseHandler = function(code, response, details) {
@@ -230,27 +231,27 @@ document.addEventListener('DOMContentLoaded', function() { [].forEach.call(docum
 function(el) { el.addEventListener('submit', function(event) { 
 var form = document.querySelectorAll("#signupForm")[0]; Payplug.card.createToken(form, payplugResponseHandler, {'amount': amount3, 'currency': 'EUR' }); 
 event.preventDefault(); }) }) })
-</SCRIPT>
+</script>
 <?php
-print "<form action='$return' method='POST' id='signupForm' class='form' novalidate data-payplug='form'><DIV class='row'>
-<DIV class='col-md-12'><DIV class='input-error-wrapper' id='error-api'><P class='input-error' id='error-api-bad'></P></DIV></DIV>
-<DIV class='col-md-12'><div class='form-group'><div class='input-group'>
+print "<form action='$return' method='POST' id='signupForm' class='form' novalidate data-payplug='form'><div class='row'>
+<div class='col-md-12'><div class='input-error-wrapper' id='error-api'><p class='input-error' id='error-api-bad'></p></div></div>
+<div class='col-md-12'><div class='form-group'><div class='input-group'>
 <span class='input-group-addon'><span class='fa fa-credit-card'></span></span>
-<INPUT type='number' class='form-control input-lg' placeholder='".$langs->trans('PAYPLUG_CARDNUMBER')."' value='' autocomplete='off' data-payplug='card_number' maxlength='17'></div>
-<span id='helpBlock' class='help-block'><DIV class='input-error-wrapper' id='error-card'><P class='input-error' id='error-card-bad' style='display:none;'>".$langs->trans('PAYPLUG_ERROR_CARD')."</P></SPAN>
-</DIV></DIV></DIV>
-<DIV class='col-md-8'><div class='form-group'><div class='input-group'>
+<input type='number' class='form-control input-lg' placeholder='".$langs->trans('PAYPLUG_CARDNUMBER')."' value='' autocomplete='off' data-payplug='card_number' maxlength='17'></div>
+<span id='helpBlock' class='help-block'><div class='input-error-wrapper' id='error-card'><p class='input-error' id='error-card-bad' style='display:none;'>".$langs->trans('PAYPLUG_ERROR_CARD')."</p></span>
+</div></div></div>
+<div class='col-md-8'><div class='form-group'><div class='input-group'>
 <span class='input-group-addon'><span class='fa fa-calendar'></span></span>
-<INPUT type='text' class='form-control input-lg' placeholder='".$langs->trans('PAYPLUG_CARDEXPI')."' autocomplete='off' data-payplug='card_month_year' maxlength='7'></div>
-<span id='helpBlock' class='help-block'><DIV class='input-error-wrapper' id='error-expiry'><P class='input-error' id='error-expiry-bad' style='display:none;'>".$langs->trans('PAYPLUG_ERROR_EXPI')."</P></SPAN>
-</DIV></DIV></DIV>
-<DIV class='col-md-4'><div class='form-group'><div class='input-group'>
+<input type='text' class='form-control input-lg' placeholder='".$langs->trans('PAYPLUG_CARDEXPI')."' autocomplete='off' data-payplug='card_month_year' maxlength='7'></div>
+<span id='helpBlock' class='help-block'><div class='input-error-wrapper' id='error-expiry'><p class='input-error' id='error-expiry-bad' style='display:none;'>".$langs->trans('PAYPLUG_ERROR_EXPI')."</p></span>
+</div></div></div>
+<div class='col-md-4'><div class='form-group'><div class='input-group'>
 <span class='input-group-addon'><span class='fa fa-lock'></span></span>
-<INPUT type='number' class='form-control input-lg' placeholder='CVV' autocomplete='off' data-payplug='card_cvv' maxlength='3'></div>
-<span id='helpBlock' class='help-block'><DIV class='input-error-wrapper' id='error-cvv'><P class='input-error' id='error-cvv-bad' style='display:none;'>".$langs->trans('PAYPLUG_ERROR_CVV')."</P></SPAN>
-</DIV></DIV></DIV>
-<DIV class='col-md-12'><INPUT type='hidden' name='validation' value='OK'><BUTTON type='submit' class='btn btn-danger btn-lg btn-block' data-payplug='submit'>".$langs->trans('PAYPLUG_PAID')." ".price($refamount)."  ".$langs->trans('Currency'.$conf->currency)."</BUTTON>
-</DIV></DIV></FORM>
+<input type='number' class='form-control input-lg' placeholder='CVV' autocomplete='off' data-payplug='card_cvv' maxlength='3'></div>
+<span id='helpBlock' class='help-block'><div class='input-error-wrapper' id='error-cvv'><p class='input-error' id='error-cvv-bad' style='display:none;'>".$langs->trans('PAYPLUG_ERROR_CVV')."</p></span>
+</div></div></div>
+<div class='col-md-12'><input type='hidden' name='validation' value='OK'><button type='submit' class='btn btn-danger btn-lg btn-block' data-payplug='submit'>".$langs->trans('PAYPLUG_PAID')." ".price($refamount)."  ".$langs->trans('Currency'.$conf->currency)."</button>
+</div></div></form>
       ";
 }}
 elseif ($conf->global->PAYPLUG_OFFER == 'STARTER'){
@@ -285,8 +286,8 @@ $payment = \Payplug\Payment::create(array(
     )
 ));
 ?>
-<SCRIPT type="text/javascript" src="https://api.payplug.com/js/1.0/form.js"></SCRIPT>
-<SCRIPT type="text/javascript">
+<script type="text/javascript" src="https://api.payplug.com/js/1.0/form.js"></script>
+<script type="text/javascript">
   document.addEventListener('DOMContentLoaded', function() {
     [].forEach.call(document.querySelectorAll("#signupForm"), function(el) {
       el.addEventListener('submit', function(event) {
@@ -297,17 +298,17 @@ $payment = \Payplug\Payment::create(array(
     })
   })
 
-</SCRIPT>
+</script>
 <?php
 $amount2=round($refamount*100);
-print "<FORM action'' method='post' id='signupForm' class='formulaire' novalidate><P><INPUT type='hidden' name='validation' value='OK'>
-          <BUTTON type='submit' class='btn btn-danger btn-lg btn-block' data-payplug='submit' role='button'>".$langs->trans('PAYPLUG_PAID')." ".price($refamount)."  ".$langs->trans('Currency'.$conf->currency)."</BUTTON>
-        </P>
-      </FORM>"; 
+print "<FORM action'' method='post' id='signupForm' class='formulaire' novalidate><p><input type='hidden' name='validation' value='OK'>
+          <button type='submit' class='btn btn-danger btn-lg btn-block' data-payplug='submit' role='button'>".$langs->trans('PAYPLUG_PAID')." ".price($refamount)."  ".$langs->trans('Currency'.$conf->currency)."</button>
+        </p>
+      </form>"; 
 } 
-print "</DIV><DIV class='col-md-3'></DIV></div>";}
+print "</div><div class='col-md-3'></div></div>";}
 else {
-print"<DIV class='row'><DIV class='col-md-4'>";
+print"<div class='row'><div class='col-md-4'>";
 // Show logo (search order: logo defined by PAYBOX_LOGO_suffix, then PAYBOX_LOGO, then small company logo, large company logo, theme logo, common logo)
 $width=0;
 // Define logo and logosmall
@@ -337,7 +338,7 @@ if ($urllogo)
 	print '></center>';
 
 }
-print"</DIV><DIV class='col-md-1'></DIV><DIV class='col-md-6'>";
+print"</div><div class='col-md-1'></div><div class='col-md-6'>";
 print $msg;
 print "<form action='newpayment.php?".$linkentity."' class='form' method='post'><h3>".$langs->trans('PAYPLUG_PUBLIC_WELCOME')."</h3>
   <div class='form-group'>
@@ -355,13 +356,13 @@ print ">
 if (empty($conf->global->PAYPLUG_ENABLE_PUBLIC)) print "disabled";
 print ">
     </div><span id='helpBlock' class='help-block'>ex: CO1701-1234 / FA1701-1234</span>
-  </div><INPUT type='hidden' name='validation' value='URLOK'>
+  </div><input type='hidden' name='validation' value='URLOK'>
   <button type='submit' class='btn btn-primary btn-block btn-lg' ";
 if (empty($conf->global->PAYPLUG_ENABLE_PUBLIC)) print "disabled";
 print ">".$langs->trans('Validate')."</button>
 </form>";
-print"</DIV><DIV class='col-md-1'></DIV></DIV>";
+print"</div><div class='col-md-1'></div></div>";
 }
 if (isset($conf->global->PAYPLUG_EMAIL_HELP)&&!empty($conf->global->PAYPLUG_ENABLE_PUBLIC)){$help=$langs->trans('PAYPLUG_HELP')." <a href='mailto:".$conf->global->PAYPLUG_EMAIL_HELP."?Subject=".$langs->trans('PAYPLUG_PUBLIC')."' target='_blank'>".$conf->global->PAYPLUG_EMAIL_HELP."</a>";}
-print "<DIV class='col-md-12'><HR /><p style='text-align: center'>".$help."</p></DIV></DIV>";
+print "<div class='col-md-12'><hr /><p style='text-align: center'>".$help."</p></div></div>";
 $db->close();
