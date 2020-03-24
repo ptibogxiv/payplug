@@ -73,6 +73,10 @@ $refsocid=$order->socid;
 $refamount=$order->total_ttc; 
 $refname=$order->thirdparty->name;
 $refemail=$order->thirdparty->email;
+$refaddress=$order->thirdparty->address;
+$refpostcode=$order->thirdparty->zip;
+$refcity=$order->thirdparty->town;
+$refcountry=$order->thirdparty->country_id;
 $refdate=$order->date_commande;
 	}
 $invoice=new Facture($db);
@@ -89,6 +93,10 @@ $refsocid=$invoice->socid;
 $refamount=$invoice->total_ttc; 
 $refname=$invoice->thirdparty->name;
 $refemail=$invoice->thirdparty->email;
+$refaddress=$invoice->thirdparty->address;
+$refpostcode=$invoice->thirdparty->zip;
+$refcity=$invoice->thirdparty->town;
+$refcountry=$invoice->thirdparty->country_id;
 $refdate=$invoice->date_validation;
 	}
 if ($conf->global->PAYPLUG_MODE == 'TEST'){$secret_key=$conf->global->PAYPLUG_SK_TEST;}
@@ -139,11 +147,23 @@ try {
     'save_card'      => false,
     'force_3ds'      => boolval($conf->global->PAYPLUG_FORCE_3DSECURE),
     'payment_method' => $token,
-    'customer'       => array(
+    'billing'       => array(
     'email'          => $refemail,
     'first_name'     => $refname,
     'last_name'      => $refname
-
+    'address1'       => $refaddress,
+    'postcode'       => $refzip,
+    'city'           => $reftown
+    'country'        => $refcountry
+    ),
+    'shipping'       => array(
+    'email'          => $refemail,
+    'first_name'     => $refname,
+    'last_name'      => $refname
+    'address1'       => $refaddress,
+    'postcode'       => $refzip,
+    'city'           => $reftown
+    'country'        => $refcountry
     ),
     'notification_url' => $notification,   
     'metadata'         => array(
