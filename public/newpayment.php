@@ -261,16 +261,34 @@ print "<form action='$return' method='POST' id='signupForm' class='form' novalid
 elseif ($conf->global->PAYPLUG_OFFER == 'STARTER'){
 $amount=round($refamount*100);
 
-\Payplug\Payplug::setSecretKey("$secret_key"); 
+//\Payplug\Payplug::setSecretKey("$secret_key");
+\Payplug\Payplug::init(array(
+  'secretKey' => $secret_key,
+//  'apiVersion' => 'LA_VERSION_API',
+));
 $payment = \Payplug\Payment::create(array(
     'amount'         => $amount,
     'currency'       => 'EUR',
     'save_card'      => false,
     'force_3ds'      => boolval($conf->global->PAYPLUG_FORCE_3DSECURE),
-    'customer'       => array(
+    'billing'       => array(
     'email'          => $refemail,
     'first_name'     => $refname,
-    'last_name'      => $refname
+    'last_name'      => $refname,
+    'address1'       => $refaddress,
+    'postcode'       => $refzip,
+    'city'           => $reftown,
+    'country'        => $refcountry
+    ),
+    'shipping'       => array(
+    'email'          => $refemail,
+    'first_name'     => $refname,
+    'last_name'      => $refname,
+    'address1'       => $refaddress,
+    'postcode'       => $refzip,
+    'city'           => $reftown,
+    'country'        => $refcountry,
+    'delivery_type'  => 'VERIFIED'
     ),
     'hosted_payment' => array(
         'return_url' => $return,
