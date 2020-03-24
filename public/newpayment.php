@@ -122,7 +122,7 @@ header("location: ".$return);
 if ((!empty($conf->global->PAYPLUG_ENABLE_PUBLIC)) && ($_GET['secure'] == $key) && ($entity == $refentity) && isset($reference) && isset($refsocid) && ($refstatut < '2')){
 dol_include_once('/payplug/lib/init.php');
 
-print "<DIV class='row'><div class='col-md-3'></div>
+print "<div class='row'><div class='col-md-3'></div>
       <div class='col-md-6'><h3>Vendeur</h3>
 <div class='well'><p><b>".$langs->trans('CompanyName')." :</b> ".$conf->global->MAIN_INFO_SOCIETE_NOM."</p></div>
 <h3>".$langs->trans('Customer')."</h3>
@@ -139,7 +139,11 @@ $valid= $_POST['validation'];
 $token = $_POST['payplugToken'];
 
 if (($valid =='OK') && isset($token)) {
-\Payplug\Payplug::setSecretKey("$secret_key");
+//\Payplug\Payplug::setSecretKey("$secret_key");
+\Payplug\Payplug::init(array(
+  'secretKey' => $secret_key,
+//  'apiVersion' => 'LA_VERSION_API',
+));
 try {
   $payment = \Payplug\Payment::create(array(
     'amount'         => $amount,
@@ -150,7 +154,7 @@ try {
     'billing'       => array(
     'email'          => $refemail,
     'first_name'     => $refname,
-    'last_name'      => $refname
+    'last_name'      => $refname,
     'address1'       => $refaddress,
     'postcode'       => $refzip,
     'city'           => $reftown,
@@ -159,7 +163,7 @@ try {
     'shipping'       => array(
     'email'          => $refemail,
     'first_name'     => $refname,
-    'last_name'      => $refname
+    'last_name'      => $refname,
     'address1'       => $refaddress,
     'postcode'       => $refzip,
     'city'           => $reftown,
