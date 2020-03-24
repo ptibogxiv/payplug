@@ -76,7 +76,7 @@ $refemail=$order->thirdparty->email;
 $refaddress=$order->thirdparty->address;
 $refpostcode=$order->thirdparty->zip;
 $refcity=$order->thirdparty->town;
-$refcountry=$order->thirdparty->country_id;
+$refcountry=getCountry($order->thirdparty->country_id, '2');
 $refdate=$order->date_commande;
 	}
 $invoice=new Facture($db);
@@ -96,7 +96,7 @@ $refemail=$invoice->thirdparty->email;
 $refaddress=$invoice->thirdparty->address;
 $refpostcode=$invoice->thirdparty->zip;
 $refcity=$invoice->thirdparty->town;
-$refcountry=$invoice->thirdparty->country_id;
+$refcountry=getCountry($order->thirdparty->country_id, '2');
 $refdate=$invoice->date_validation;
 	}
 if ($conf->global->PAYPLUG_MODE == 'TEST'){$secret_key=$conf->global->PAYPLUG_SK_TEST;}
