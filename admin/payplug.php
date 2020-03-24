@@ -93,7 +93,7 @@ print_fiche_titre($langs->trans("ModuleSetup").' Payplug',$linkback);
 print '<br>';
 
 print '<form method="post" action="'.$_SERVER["PHP_SELF"].'">';
-print '<input type="hidden" name="token" value="'.$_SESSION['newtoken'].'">';
+print '<input type="hidden" name="token" value="'.newtoken().'">';
 print '<input type="hidden" name="action" value="setvalue">';
 
 
@@ -117,7 +117,7 @@ print "</tr>\n";
 $var=!$var;
 print '<tr '.$bc[$var].'><td class="fieldrequired">';
 print $langs->trans("PAYPLUG_MODE").'</td><td>';
-$tmplist=array('TEST'=>TEST, 'LIVE'=>LIVE);
+$tmplist=array('TEST'=>'TEST', 'LIVE'=>'LIVE');
 print $form->selectarray('PAYPLUG_MODE', $tmplist, $conf->global->PAYPLUG_MODE);
 print '</td></tr>';
 $var=!$var;
