@@ -91,8 +91,8 @@ $refname=$invoice->thirdparty->name;
 $refemail=$invoice->thirdparty->email;
 $refdate=$invoice->date_validation;
 	}
-if ($conf->global->PAYPLUG_MODE == TEST){$secret_key=$conf->global->PAYPLUG_SK_TEST;}
-elseif ($conf->global->PAYPLUG_MODE == LIVE){$secret_key=$conf->global->PAYPLUG_SK_LIVE;}
+if ($conf->global->PAYPLUG_MODE == 'TEST'){$secret_key=$conf->global->PAYPLUG_SK_TEST;}
+elseif ($conf->global->PAYPLUG_MODE == 'LIVE'){$secret_key=$conf->global->PAYPLUG_SK_LIVE;}
 // Error message
 if (empty($conf->global->PAYPLUG_ENABLE_PUBLIC)){$msg="<DIV class='alert alert-info' role='alert'>".$langs->trans('PAYPLUG_ERROR_DISABLED')."</DIV>";}
 elseif (isset($refstatut) && ($refstatut != '1')) {$msg="<DIV class='alert alert-info' role='alert'>".$langs->trans('PAYPLUG_ERROR_PAID')."</DIV>";}
