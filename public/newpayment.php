@@ -206,8 +206,8 @@ print "<div><strong>Error !</strong><br />". $payment->failure->message ." (" . 
 print "</div>";
 }
 else {
-if ($conf->global->PAYPLUG_MODE == TEST){$publish_key=$conf->global->PAYPLUG_PK_TEST;}
-elseif ($conf->global->PAYPLUG_MODE == LIVE){$publish_key=$conf->global->PAYPLUG_PK_LIVE;}     
+if ($conf->global->PAYPLUG_MODE == 'TEST'){$publish_key=$conf->global->PAYPLUG_PK_TEST;}
+elseif ($conf->global->PAYPLUG_MODE == 'LIVE'){$publish_key=$conf->global->PAYPLUG_PK_LIVE;}     
 ?>
 <script type="text/javascript">
   Payplug.setPublishableKey('<?PHP echo $publish_key;?>');
