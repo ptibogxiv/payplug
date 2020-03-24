@@ -2,20 +2,20 @@
 namespace Payplug\Resource;
 
 /**
- * A Hosted Payment
+ * A Payment Billing.
  */
-class HostedPayment extends APIResource
+class PaymentBilling extends APIResource
 {
     /**
      * The factory method that constructs the API resource.
      *
-     * @param   array   $attributes the default attributes.
+     * @param   array $attributes the default attributes.
      *
-     * @return  HostedPayment   The new resource.
+     * @return  PaymentBilling The new resource.
      */
     public static function fromAttributes(array $attributes)
     {
-        $object = new HostedPayment();
+        $object = new PaymentBilling();
         $object->initialize($attributes);
         return $object;
     }

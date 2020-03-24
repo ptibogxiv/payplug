@@ -1,3 +1,41 @@
+3.2.0
+-----
+
+- **NEW**: Add Oney Payment Simulations
+
+3.1.0
+-----
+
+- **NEW**: Deprecated Payplug::setSecretKey function, use Payplug::init instead
+- **NEW**: API version should now be specified explicitly from module
+- **NEW**: Improve Payplug setSecretKey with init method
+- **NEW**: Excluded configuration API_VERSION versionning, it will be send from the apps nowadays
+
+3.0.0
+-----
+
+- **Major**: Replace customer by shipping and billing to be compliant with PSD2.
+- **NEW**: Add versionning with new API_VERSION parameter.
+
+
+2.7.0
+-----
+
+- **NEW**: Add deferred payments.
+
+
+2.6.0
+-----
+
+- **NEW**: Add installment plans.
+
+
+2.5.1
+-----
+
+- **Bugfix**: Fix packagist bundle.
+
+
 2.5.0
 -----
 

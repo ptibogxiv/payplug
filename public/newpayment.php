@@ -65,7 +65,7 @@ $result=$order->fetch('',$reference);
 	{
 $result=$order->fetch_thirdparty($order->socid);
 $codeclient=$order->thirdparty->code_client;
-$reftype=order; 
+$reftype='order'; 
 $refid=$order->id;
 $refstatut=$order->statut;
 $refentity=$order->thirdparty->entity;
@@ -81,7 +81,7 @@ $result=$invoice->fetch('',$reference);
 	{
 $result=$invoice->fetch_thirdparty($invoice->socid);
 $codeclient=$invoice->thirdparty->code_client;
-$reftype=invoice; 
+$reftype='invoice'; 
 $refid=$invoice->id;
 $refstatut=$invoice->statut;
 $refentity=$invoice->thirdparty->entity;
