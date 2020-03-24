@@ -156,8 +156,8 @@ try {
     'first_name'     => $refname,
     'last_name'      => $refname,
     'address1'       => $refaddress,
-    'postcode'       => $refzip,
-    'city'           => $reftown,
+    'postcode'       => $refpostcode,
+    'city'           => $refcity,
     'country'        => $refcountry
     ),
     'shipping'       => array(
@@ -165,8 +165,8 @@ try {
     'first_name'     => $refname,
     'last_name'      => $refname,
     'address1'       => $refaddress,
-    'postcode'       => $refzip,
-    'city'           => $reftown,
+    'postcode'       => $refpostcode,
+    'city'           => $refcity,
     'country'        => $refcountry,
     'delivery_type'  => 'VERIFIED'
     ),
@@ -276,8 +276,8 @@ $payment = \Payplug\Payment::create(array(
     'first_name'     => $refname,
     'last_name'      => $refname,
     'address1'       => $refaddress,
-    'postcode'       => $refzip,
-    'city'           => $reftown,
+    'postcode'       => $refpostcode,
+    'city'           => $refcity,
     'country'        => $refcountry
     ),
     'shipping'       => array(
@@ -285,8 +285,8 @@ $payment = \Payplug\Payment::create(array(
     'first_name'     => $refname,
     'last_name'      => $refname,
     'address1'       => $refaddress,
-    'postcode'       => $refzip,
-    'city'           => $reftown,
+    'postcode'       => $refpostcode,
+    'city'           => $refcity,
     'country'        => $refcountry,
     'delivery_type'  => 'VERIFIED'
     ),
