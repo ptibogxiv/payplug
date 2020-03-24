@@ -133,7 +133,7 @@ print "<div class='row'><div class='col-md-3'></div>
 if ($conf->global->PAYPLUG_OFFER == 'PREMIUM'){
 $amount=round($refamount*100); 
 ?>
-<script type="text/javascript" src="https://api.payplug.com/js/1.0/payplug.js"></script>
+<script type="text/javascript" src="https://api.payplug.com/js/1/payplug.latest.js"></script>
 <?php        
 $valid= $_POST['validation'];
 $token = $_POST['payplugToken'];
